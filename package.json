@@ -1,0 +1,51 @@
+{
+	"name": "staruml-watermark-remover",
+	"version": "1.0.0",
+	"description": "StarUML watermark remover",
+	"main": "index.js",
+	"type": "module",
+	"license": "MIT",
+	"repository": "abranhe/staruml-watermark-remover",
+	"bin": {
+		"swr": "./cli.js",
+		"staruml-watermark-remover": "./cli.js"
+	},
+	"scripts": {
+		"test": "NODE_OPTIONS=--experimental-vm-modules jest && xo"
+	},
+	"engines": {
+		"node": ">=16.0.0"
+	},
+	"keywords": [
+		"staruml",
+		"diagram",
+		"watermark",
+		"remover"
+	],
+	"files": [
+		"index.js",
+		"cli.js"
+	],
+	"author": {
+		"name": "Abraham Hernandez",
+		"email": "abraham@abranhe.com",
+		"url": "https://abranhe.com"
+	},
+	"dependencies": {
+		"chalk": "^5.0.1",
+		"hast-util-to-html": "^8.0.3",
+		"immutability-helper": "^3.1.1",
+		"lodash.get": "^4.4.2",
+		"meow": "^10.1.2",
+		"svg-parser": "^2.0.4"
+	},
+	"devDependencies": {
+		"jest": "^27.5.1",
+		"xo": "^0.48.0"
+	},
+	"xo": {
+		"rules": {
+			"no-undef": "off"
+		}
+	}
+}

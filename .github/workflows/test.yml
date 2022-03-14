@@ -1,0 +1,15 @@
+name: build
+on: [push]
+
+jobs:
+  test:
+    name: Node.js 16
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+
+      - run: yarn && yarn test
