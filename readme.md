@@ -35,6 +35,7 @@ $ staruml-watermark-remover input.svg -o output.svg
 
 ### Options
 
+- `-p, --png`: Output as `png` file.
 - `-o, --output <path>`: Output file path.
 - `-h, --help`: Show help.
 - `-v, --version`: Show version.

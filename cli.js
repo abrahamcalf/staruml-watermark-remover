@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import process from 'node:process';
 import meow from 'meow';
 import chalk from 'chalk';
-
+import convertSvgToPng from 'convert-svg-to-png';
 import starumlWatermarkRemover from './index.js';
 
 const cli = meow(
@@ -12,9 +12,10 @@ const cli = meow(
     $ staruml-watermark-remover <input>
 
   Options
-    --output, -o    Output file path
-    --help, -h      Show help
-    --version, -v   Show version
+    -p, --png       Convert to png
+    -o, --output    Output file path
+    -h, --help      Show help
+    -v, --version   Show version
 
   Examples
     $ staruml-watermark-remover input.svg
@@ -23,6 +24,10 @@ const cli = meow(
 	{
 		importMeta: import.meta,
 		flags: {
+			png: {
+				type: 'boolean',
+				alias: 'p',
+			},
 			output: {
 				type: 'string',
 				alias: 'o',
@@ -55,6 +60,15 @@ try {
 			const updatedSvg = starumlWatermarkRemover(svg);
 
 			fs.writeFileSync(output, updatedSvg);
+
+			if (!cli.flags.png) {
+				console.log(chalk.green(`✔ ${output}`));
+			}
+
+			if (cli.flags.png) {
+				convertSvgToPng.convertFile(output);
+				console.log(chalk.green(`✔ ${output.replace(/\.svg$/, '.png')}`));
+			}
 		}
 	}
 } catch (error) {
