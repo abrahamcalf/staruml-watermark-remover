@@ -3,7 +3,7 @@ import update from 'immutability-helper';
 import {parse} from 'svg-parser';
 import {toHtml} from 'hast-util-to-html';
 
-const removeUnregisterdText = svg => {
+const removeUnregisteredText = svg => {
 	const children = get(svg, 'children[0].children[1].children', []);
 
 	const filteredChildren = children.filter(child => {
@@ -32,6 +32,6 @@ const removeUnregisterdText = svg => {
 export default function removeWatermark(svgString) {
 	const parsedSvg = parse(svgString);
 
-	const filteredSvgJson = removeUnregisterdText(parsedSvg);
+	const filteredSvgJson = removeUnregisteredText(parsedSvg);
 	return toHtml(filteredSvgJson);
 }
